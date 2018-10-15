@@ -33,7 +33,7 @@ Node::Node(Node&& node){
 
     node.name = "";
     node.amount = 0;
-    delete node->next;
+    delete node.next;
     node.next = NULL;
 
 }
@@ -48,7 +48,7 @@ Node& Node::operator=(Node&& node){
 
     node.name = "";
     node.amount = 0;
-    delete node->next;
+    delete node.next;
     node.next = NULL;
     return *this;
 }
