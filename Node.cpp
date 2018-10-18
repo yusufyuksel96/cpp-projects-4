@@ -27,13 +27,10 @@ Node& Node::operator=(const Node& node){
 Node::Node(Node&& node){
     this->name = move(node.name);
     this->amount = move(node.amount);
-    if(node.next) {
-        this->next = new Node(*(node.next));
-    }
+    this->next = move(node.next);
 
     node.name = "";
     node.amount = 0;
-    delete node.next;
     node.next = NULL;
 
 }
@@ -41,14 +38,11 @@ Node::Node(Node&& node){
 Node& Node::operator=(Node&& node){
     this->name = move(node.name);
     this->amount = move(node.amount);
-    if(node.next) {
-        delete this->next;
-        this->next = new Node(*(node.next));
-    }
+    delete this->next;
+    this->next = move(node.next);
 
     node.name = "";
     node.amount = 0;
-    delete node.next;
     node.next = NULL;
     return *this;
 }
