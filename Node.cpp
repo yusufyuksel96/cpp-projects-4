@@ -17,8 +17,8 @@ Node::Node(const Node& node){
 Node& Node::operator=(const Node& node){
     this->name = node.name;
     this->amount = node.amount;
+    delete this->next;
     if(node.next) {
-        delete this->next;
         this->next = new Node(*(node.next));
     }
     return *this;
